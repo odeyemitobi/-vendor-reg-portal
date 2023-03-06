@@ -1,11 +1,9 @@
 import './App.css';
-import NavBar from './component/NavBar/NavBar';
+import MainLayout from './layout/MainLayout';
 
 function App() {
   return (
-    <>
-      <NavBar/>
-    </>
+    <MainLayout/>
   );
 }
 
