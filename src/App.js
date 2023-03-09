@@ -1,9 +1,18 @@
 import './App.css';
-import MainLayout from './layout/MainLayout';
+import Signup from './pages/main/Signup';
+import Login from './pages/main/Login';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <MainLayout/>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Signup />} />
+          <Route exact path="/login" element={<Login/>} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

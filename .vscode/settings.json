@@ -1,5 +1,6 @@
 {
-    "emmet.preferences": {
-        
-    }
+  "emmet.preferences": {},
+  "general.quoteStyle": "Double quotes",
+  "importStatements.javascript.withExtnameJS": true,
+  "importStatements.stylesheet.withExtnameCSS": true
 }
