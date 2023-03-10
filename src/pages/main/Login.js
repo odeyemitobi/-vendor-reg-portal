@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { FiLock } from "react-icons/fi";
 import { useNavigate } from "react-router";
+import ETAX from "../../Assets/pic/Etax.png";
 import RECTANGLE from "../../Assets/pic/Rectangle.png";
 import HANDSHAKE from "../../Assets/img/Handshake.png";
 import MainLayout from "../../layout/MainLayout";
@@ -31,7 +32,7 @@ function Login() {
           <div className="mt-12 w-full">
             <img className="" src={HANDSHAKE} alt="" />
           </div>
-          <div className="mt-16 pl-[2rem] text-left text-[13px] leading-5 text-[#343434]">
+          <div className="mt-16 mb-2 pl-[2rem] text-left text-[13px] leading-5 text-[#343434]">
             <p>RC 103022</p>
             <p>
               Copyright 2019 Fidelity Bank Plc. An authorised financial services
@@ -99,13 +100,19 @@ function Login() {
                 />
               </div>
             </div>
-            <div className="mt-3 w-full text-right text-[#5166D4]">
+            <div
+              className="mt-3 w-full text-right text-[#5166D4]"
+              onClick={() => navigate("/forgotpassword")}
+            >
               <p>forgot password?</p>
             </div>
             <div className="mt-9">
               <Loginbutton />
             </div>
           </form>
+        </div>
+        <div className="mt-[10rem]">
+          <img className="ml-auto mr-6 h-11" src={ETAX} alt="" />
         </div>
       </div>
     </MainLayout>

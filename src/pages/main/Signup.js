@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import WOMAN from "../../Assets/img/woman.png";
+import ETAX from "../../Assets/pic/Etax.png";
 import RECTANGLE from "../../Assets/pic/Rectangle.png";
 import Button from "../../component/Button/Button";
 import MainLayout from "../../layout/MainLayout";
-import { ImArrowRight2 } from "react-icons/im";
 
 function Signup() {
   const [account, setAccount] = useState("");
@@ -20,7 +20,7 @@ function Signup() {
 
   return (
     <MainLayout>
-      <div className="flex w-full justify-between">
+      <div className="flex w-full">
         <div className="w-full pt-[6rem] pl-[2rem] text-center">
           <div className="w-full ">
             <h3 className="interest text-3xl font-semibold text-[#0E237E]">
@@ -34,7 +34,7 @@ function Signup() {
           <div className="mt-12 w-full pl-[10rem]">
             <img className="h-[22rem]" src={WOMAN} alt="" />
           </div>
-          <div className="mt-16 text-left font-sans text-[13px] leading-5 text-[#343434]">
+          <div className="mt-[7rem] mb-2 text-left font-sans text-[13px] leading-5 text-[#343434]">
             <p>RC 103022</p>
             <p>
               Copyright 2019 Fidelity Bank Plc. An authorised financial services
@@ -46,7 +46,7 @@ function Signup() {
             </p>
           </div>
         </div>
-        <div className="w-full bg-[#F8F8F8] text-left">
+        <div className="w-full bg-[#F8F8F8]">
           <div className="w-full p-[4rem] font-sans ">
             <div className="flex w-full pl-2">
               <div
@@ -121,7 +121,9 @@ function Signup() {
               </div>
             </form>
           </div>
-          
+          <div className="mt-[7rem]">
+            <img className="h-11 ml-auto mr-6" src={ETAX} alt="" />
+          </div>
         </div>
       </div>
     </MainLayout>
