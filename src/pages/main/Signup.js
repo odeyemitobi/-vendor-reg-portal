@@ -31,8 +31,12 @@ function Signup() {
               Plc in Nigeria need to be registered with the company
             </p>
           </div>
-          <div className="mt-12 w-full pl-[10rem]">
-            <img className="h-[22rem]" src={WOMAN} alt="" />
+          <div className="mt-12 w-full">
+            <img
+              className="ml-auto mr-auto block h-[22rem]"
+              src={WOMAN}
+              alt=""
+            />
           </div>
           <div className="mt-[7rem] mb-2 text-left font-sans text-[13px] leading-5 text-[#343434]">
             <p>RC 103022</p>
@@ -107,8 +111,10 @@ function Signup() {
                   placeholder="* * * * * * *"
                 />
               </div>
-              <div className="mt-9">
+              <div className="mt-9" onClick={() => navigate("/emailverify")}>
                 <Button />
+              </div>
+              <div>
                 <p className="mt-2 text-base font-semibold text-[#343434]">
                   Already have an account?{" "}
                   <b
@@ -122,7 +128,7 @@ function Signup() {
             </form>
           </div>
           <div className="mt-[7rem]">
-            <img className="h-11 ml-auto mr-6" src={ETAX} alt="" />
+            <img className="ml-auto mr-6 h-11" src={ETAX} alt="" />
           </div>
         </div>
       </div>

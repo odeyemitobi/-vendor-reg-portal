@@ -20,8 +20,12 @@ function Forgotpassword() {
     <MainLayout>
       <div className="flex w-full justify-between font-sans">
         <div className="w-full">
-          <div className="w-full pt-[8rem] pl-[6rem] text-center">
-            <img className="h-[21rem]" src={UNLOCK} alt="" />
+          <div className="w-full pt-[8rem]">
+            <img
+              className="ml-auto mr-auto block h-[21rem]"
+              src={UNLOCK}
+              alt=""
+            />
           </div>
           <div className="mt-[12rem] mb-2 pl-8 text-left font-sans text-[13px] leading-5 text-[#343434]">
             <p>RC 103022</p>
