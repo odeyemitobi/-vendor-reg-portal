@@ -6,7 +6,7 @@ import ETAX from "../../Assets/pic/Etax.png";
 import RECTANGLE from "../../Assets/pic/Rectangle.png";
 import HANDSHAKE from "../../Assets/img/Handshake.png";
 import MainLayout from "../../layout/MainLayout";
-import Loginbutton from "./../../component/Button/Loginbutton";
+import Loginbutton from "../../component/Button/Loginbutton";
 
 function Login() {
   const [account, setAccount] = useState("");
@@ -53,7 +53,7 @@ function Login() {
               <img className="mt-1 w-[80%]" src={RECTANGLE} alt="" />
             </div>
             <div
-              className="w-2/3 text-2xl text-[#343434]"
+              className="w-2/3 text-2xl text-[#343434] cursor-pointer"
               onClick={() => navigate("/")}
             >
               Sign Up
@@ -101,12 +101,12 @@ function Login() {
               </div>
             </div>
             <div
-              className="mt-3 w-full text-right text-[#5166D4]"
+              className="mt-3 w-full text-right text-[#5166D4] cursor-pointer"
               onClick={() => navigate("/forgotpassword")}
             >
               <p>forgot password?</p>
             </div>
-            <div className="mt-9">
+            <div onClick={() => navigate("/four")} className="mt-9">
               <Loginbutton />
             </div>
           </form>

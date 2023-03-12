@@ -1,33 +1,34 @@
 import React from "react";
 import MainLayout from "../../layout/MainLayout";
+import { useNavigate } from "react-router";
 import ETAX from "../../Assets/pic/Etax.png";
-import MAIL from "../../Assets/img/Mail.png";
+import FOUR from "../../Assets/img/Four.png";
+import Home from "../../component/Button/Home";
 
-function Emailverify() {
+function Four() {
+  const navigate = useNavigate();
   return (
     <MainLayout>
       <div className="w-full font-sans">
         <div className="w-full text-center">
-          <div className="mt-14 w-full text-2xl">
-            <h1 className="text-[#343434]">Congratulations</h1>
+          <div className="mt-14 w-full text-3xl font-semibold">
+            <h1 className="text-[#343434]">Sorry, Page not found</h1>
           </div>
           <div className="mt-14">
             <img
               className="ml-auto mr-auto block h-[410px]"
-              src={MAIL}
+              src={FOUR}
               alt=""
             />
           </div>
-          <div className="mt-9 text-xl">
-            <h1 className="text-[#343434]">
-              Your Email Address has been successfully Verified
-            </h1>
-            <p className="text-[#0E237E]">
-              Click here to complete your registration.
-            </p>
+          <div
+            onClick={() => navigate("/login")}
+            className="mt-9 text-xl"
+          >
+            <Home />
           </div>
         </div>
-        <div className="w-full mt-[7rem] mb-3 px-7 flex justify-between">
+        <div className="mt-[7rem] mb-3 flex w-full justify-between px-7">
           <div className="text-[14px]">
             <p>RC 103022</p>
             <p>
@@ -48,4 +49,4 @@ function Emailverify() {
   );
 }
 
-export default Emailverify;
+export default Four;

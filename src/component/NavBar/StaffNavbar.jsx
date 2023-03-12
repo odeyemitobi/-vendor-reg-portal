@@ -12,7 +12,7 @@ function StaffNavbar() {
         <img className="h-6" src={FIDELITY} alt="" />
       </div>
       <div
-        className="text-[20px] font-bold text-[#23232399]"
+        className="cursor-pointer text-[20px] font-bold text-[#23232399]"
         onClick={() => navigate("/")}
       >
         <p>Staff Portal</p>

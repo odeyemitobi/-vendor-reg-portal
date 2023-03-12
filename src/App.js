@@ -5,6 +5,7 @@ import Forgotpassword from "./pages/main/Forgotpassword";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Emailverify from './pages/main/Emailverify';
 import Staffportal from './pages/sub/Staffportal';
+import Four from './pages/main/Four';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/forgotpassword" element={<Forgotpassword />} />
           <Route exact path="/emailverify" element={<Emailverify />} />
           <Route exact path="/staffportal" element={<Staffportal />} />
+          <Route exact path="/four" element={<Four />} />
         </Routes>
       </Router>
     </div>

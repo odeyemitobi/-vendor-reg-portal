@@ -35,3 +35,13 @@ h6 {
 .rc{
   font-family: 'PT Sans';
 }
+
+.staff {
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+  background-image: url("../Assets/img/Staffbg.png");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+}

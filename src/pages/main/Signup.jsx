@@ -54,7 +54,7 @@ function Signup() {
           <div className="w-full p-[4rem] font-sans ">
             <div className="flex w-full pl-2">
               <div
-                className="w-1/6 text-2xl text-[#343434]"
+                className="w-1/6 text-2xl text-[#343434] cursor-pointer"
                 onClick={() => navigate("/login")}
               >
                 Login
@@ -118,7 +118,7 @@ function Signup() {
                 <p className="mt-2 text-base font-semibold text-[#343434]">
                   Already have an account?{" "}
                   <b
-                    className="font-bold text-[#5166D4]"
+                    className="font-bold text-[#5166D4] cursor-pointer"
                     onClick={() => navigate("/login")}
                   >
                     Log in

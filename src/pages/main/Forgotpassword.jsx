@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import ETAX from "../../Assets/pic/Etax.png";
 import MainLayout from "../../layout/MainLayout";
 import UNLOCK from "../../Assets/img/unlock.png";
-import Resetbtn from './../../component/Button/Resetbtn';
+import Resetbtn from '../../component/Button/Resetbtn';
 
 function Forgotpassword() {
   const [account, setAccount] = useState("");
