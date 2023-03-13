@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import WOMAN from "../../Assets/img/woman.png";
 import ETAX from "../../Assets/pic/Etax.png";
@@ -7,15 +7,63 @@ import Button from "../../component/Button/Button";
 import MainLayout from "../../layout/MainLayout";
 
 function Signup() {
-  const [account, setAccount] = useState("");
-  const [pass, setPass] = useState("");
-  const [conpass, setConpass] = useState("");
+  const initialValues = {
+    accountnumber: "",
+    password: "",
+    confirmpassword: "",
+  };
+  const [inputValues, setInputValues] = useState(initialValues);
+  const [inputErrors, setInputErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(account);
+    setInputErrors(validate(inputValues));
+    setIsSubmit(true);
+  };
+
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      console.log(inputValues);
+      navigate("/verifycode")
+    }
+  }, [inputErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.accountnumber) {
+      errors.accountnumber = "Account number is required!";
+    } else if (values.accountnumber.length < 11) {
+      errors.accountnumber = "Account number must be more than 11 characters";
+    } else if (values.accountnumber.length > 11) {
+      errors.accountnumber =
+        "Account number cannot exceed more than 11 characters";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required!";
+    } else if (values.password.length < 8) {
+      errors.password = "Password must be more than 8 characters";
+    } else if (values.password.length > 8) {
+      errors.password = "Password cannot exceed more than 8 characters";
+    }
+
+    if (!values.confirmpassword) {
+      errors.confirmpassword = "Confirm your password!";
+    } else if (values.confirmpassword.length < 8) {
+      errors.confirmpassword = "Must be the same as your password";
+    } else if (values.confirmpassword.length > 8) {
+      errors.confirmpassword = "Must be the same as your password";
+    }
+    return errors;
   };
 
   return (
@@ -54,7 +102,7 @@ function Signup() {
           <div className="w-full p-[4rem] font-sans ">
             <div className="flex w-full pl-2">
               <div
-                className="w-1/6 text-2xl text-[#343434] cursor-pointer"
+                className="w-1/6 cursor-pointer text-2xl text-[#343434]"
                 onClick={() => navigate("/login")}
               >
                 Login
@@ -73,13 +121,17 @@ function Signup() {
                   ACCOUNT NUMBER
                 </label>
                 <input
+                  name="accountnumber"
                   className="rounded-sm p-3 pl-4 italic"
-                  value={account}
-                  onChange={(e) => setAccount(e.target.value)}
-                  type="accountnumber"
+                  value={inputValues.accountnumber}
+                  onChange={handleChange}
+                  type="number"
                   placeholder="50501623495"
                 />
               </div>
+              <p className=" pl-2 text-xs text-red-600">
+                {inputErrors.accountnumber}
+              </p>
               <div className="mt-9 flex flex-col">
                 <label
                   className="mb-1 pl-2 text-sm text-[#343434]"
@@ -88,13 +140,17 @@ function Signup() {
                   PASSWORD:
                 </label>
                 <input
+                  name="password"
                   className="rounded-sm p-3 pl-4 italic"
-                  value={pass}
-                  onChange={(e) => setPass(e.target.value)}
+                  value={inputValues.password}
+                  onChange={handleChange}
                   type="password"
                   placeholder="* * * * * * *"
                 />
               </div>
+              <p className=" pl-2 text-xs text-red-600">
+                {inputErrors.password}
+              </p>
               <div className="mt-9 flex flex-col">
                 <label
                   className="mb-1 pl-2 text-sm text-[#343434]"
@@ -103,22 +159,25 @@ function Signup() {
                   CONFIRM PASSWORD:
                 </label>
                 <input
+                  name="confirmpassword"
                   className="rounded-sm p-3 pl-4 italic"
-                  value={conpass}
-                  icon=""
-                  onChange={(e) => setConpass(e.target.value)}
+                  value={inputValues.confirmpassword}
+                  onChange={handleChange}
                   type="password"
                   placeholder="* * * * * * *"
                 />
               </div>
-              <div className="mt-9" onClick={() => navigate("/emailverify")}>
+              <p className=" pl-2 text-xs text-red-600">
+                {inputErrors.confirmpassword}
+              </p>
+              <div className="mt-9">
                 <Button />
               </div>
               <div>
                 <p className="mt-2 text-base font-semibold text-[#343434]">
                   Already have an account?{" "}
                   <b
-                    className="font-bold text-[#5166D4] cursor-pointer"
+                    className="cursor-pointer font-bold text-[#5166D4]"
                     onClick={() => navigate("/login")}
                   >
                     Log in

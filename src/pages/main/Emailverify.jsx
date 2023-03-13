@@ -6,6 +6,7 @@ import MAIL from "../../Assets/img/Mail.png";
 
 function Emailverify() {
   const navigate = useNavigate();
+
   return (
     <MainLayout>
       <div className="w-full font-sans">
