@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StaffLayout from "../../layout/StaffLayout";
 import { FiUser } from "react-icons/fi";
 import { FiLock } from "react-icons/fi";
@@ -6,13 +6,52 @@ import STAFFETAX from "../../Assets/pic/Staffetax.png";
 import Loginbutton from "../../component/Button/Loginbutton";
 
 function Staffportal() {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+  const [inputValues, setInputValues] = useState(initialValues);
+  const [inputErrors, setInputErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    setInputErrors(validate(inputValues));
+    setIsSubmit(true);
   };
+
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      console.log(inputValues);
+    }
+  }, [inputErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    if (!values.email) {
+      errors.email = "Email is required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format!";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required!";
+    } else if (values.password.length < 8) {
+      errors.password = "Password must be more than 8 characters";
+    } else if (values.password.length > 8) {
+      errors.password = "Password cannot exceed more than 8 characters";
+    }
+    return errors;
+  };
+  
+
   return (
     <StaffLayout>
       <div className="staff w-full font-sans">
@@ -33,13 +72,17 @@ function Staffportal() {
                   <FiUser />
                 </div>
                 <input
+                  name="email"
                   className="w-full rounded-sm p-3 pl-[4.5rem] font-sans text-[18px] italic"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={inputValues.email}
+                  onChange={handleChange}
                   type="email"
                   placeholder="moosteebeasty@fidelitybank.ng"
                 />
               </div>
+              <p className="mt-1 text-left pl-2 text-xs text-red-600">
+                {inputErrors.email}
+              </p>
             </div>
             <div className="mt-[3.5rem] flex flex-col">
               <label
@@ -53,13 +96,17 @@ function Staffportal() {
                   <FiLock />
                 </div>
                 <input
+                  name="password"
                   className="w-full rounded-sm p-3 pl-[4.5rem] font-sans text-[18px] italic"
-                  value={pass}
-                  onChange={(e) => setPass(e.target.value)}
+                  value={inputValues.password}
+                  onChange={handleChange}
                   type="password"
                   placeholder="* * * * * * *"
                 />
               </div>
+              <p className="mt-1 text-left pl-2 text-xs text-red-600">
+                {inputErrors.password}
+              </p>
             </div>
             <div className="pt-[3.5rem] text-left">
               <Loginbutton />

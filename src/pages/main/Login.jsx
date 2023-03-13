@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { FiLock } from "react-icons/fi";
 import { useNavigate } from "react-router";
@@ -9,14 +9,54 @@ import MainLayout from "../../layout/MainLayout";
 import Loginbutton from "../../component/Button/Loginbutton";
 
 function Login() {
-  const [account, setAccount] = useState("");
-  const [pass, setPass] = useState("");
+  const initialValues = {
+    accountnumber: "",
+    password: "",
+  };
+  const [inputValues, setInputValues] = useState(initialValues);
+  const [inputErrors, setInputErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(account);
+    setInputErrors(validate(inputValues));
+    setIsSubmit(true);
+  };
+
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      console.log(inputValues);
+      navigate("/four");
+    }
+  }, [inputErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.accountnumber) {
+      errors.accountnumber = "Account number is required!";
+    } else if (values.accountnumber.length < 11) {
+      errors.accountnumber = "Account number must be more than 11 characters";
+    } else if (values.accountnumber.length > 11) {
+      errors.accountnumber =
+        "Account number cannot exceed more than 11 characters";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required!";
+    } else if (values.password.length < 8) {
+      errors.password = "Password must be more than 8 characters";
+    } else if (values.password.length > 8) {
+      errors.password = "Password cannot exceed more than 8 characters";
+    }
+    return errors;
   };
 
   return (
@@ -53,7 +93,7 @@ function Login() {
               <img className="mt-1 w-[80%]" src={RECTANGLE} alt="" />
             </div>
             <div
-              className="w-2/3 text-2xl text-[#343434] cursor-pointer"
+              className="w-2/3 cursor-pointer text-2xl text-[#343434]"
               onClick={() => navigate("/")}
             >
               Sign Up
@@ -72,13 +112,17 @@ function Login() {
                   <FiUser />
                 </div>
                 <input
+                  name="accountnumber"
                   className="w-full rounded-sm p-3 pl-[4.5rem] font-sans text-[18px] italic"
-                  value={account}
-                  onChange={(e) => setAccount(e.target.value)}
+                  value={inputValues.accountnumber}
+                  onChange={handleChange}
                   type="accountnumber"
                   placeholder="50501623495"
                 />
               </div>
+              <p className=" mt-1 pl-2 text-xs text-red-600">
+                {inputErrors.accountnumber}
+              </p>
             </div>
             <div className="mt-9 flex flex-col">
               <label
@@ -92,21 +136,25 @@ function Login() {
                   <FiLock />
                 </div>
                 <input
+                  name="password"
                   className="w-full rounded-sm p-3 pl-[4.5rem] text-[18px] italic"
-                  value={pass}
-                  onChange={(e) => setPass(e.target.value)}
+                  value={inputValues.password}
+                  onChange={handleChange}
                   type="password"
                   placeholder="* * * * * * *"
                 />
               </div>
+              <p className=" mt-1 pl-2 text-xs text-red-600">
+                {inputErrors.password}
+              </p>
             </div>
             <div
-              className="mt-3 w-full text-right text-[#5166D4] cursor-pointer"
+              className="mt-3 w-full cursor-pointer text-right text-[#5166D4]"
               onClick={() => navigate("/forgotpassword")}
             >
               <p>forgot password?</p>
             </div>
-            <div onClick={() => navigate("/four")} className="mt-9">
+            <div className="mt-9">
               <Loginbutton />
             </div>
           </form>

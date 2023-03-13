@@ -32,7 +32,7 @@ function Signup() {
   useEffect(() => {
     if (Object.keys(inputErrors).length === 0 && isSubmit) {
       console.log(inputValues);
-      navigate("/verifycode")
+      navigate("/verifycode");
     }
   }, [inputErrors]);
 
@@ -129,7 +129,7 @@ function Signup() {
                   placeholder="50501623495"
                 />
               </div>
-              <p className=" pl-2 text-xs text-red-600">
+              <p className="mt-1 pl-2 text-xs text-red-600">
                 {inputErrors.accountnumber}
               </p>
               <div className="mt-9 flex flex-col">
@@ -148,7 +148,7 @@ function Signup() {
                   placeholder="* * * * * * *"
                 />
               </div>
-              <p className=" pl-2 text-xs text-red-600">
+              <p className="mt-1 pl-2 text-xs text-red-600">
                 {inputErrors.password}
               </p>
               <div className="mt-9 flex flex-col">
@@ -167,7 +167,7 @@ function Signup() {
                   placeholder="* * * * * * *"
                 />
               </div>
-              <p className=" pl-2 text-xs text-red-600">
+              <p className="mt-1 pl-2 text-xs text-red-600">
                 {inputErrors.confirmpassword}
               </p>
               <div className="mt-9">

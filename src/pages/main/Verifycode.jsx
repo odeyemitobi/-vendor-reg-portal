@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../../layout/MainLayout";
 import ETAX from "../../Assets/pic/Etax.png";
 import { useNavigate } from "react-router";
@@ -6,14 +6,46 @@ import { FiLock } from "react-icons/fi";
 import Verifybtn from "./../../component/Button/Verifybtn";
 
 function Verifycode() {
-  const [pass, setPass] = useState("");
+  const initialValues = {
+    code: "",
+  };
+  const [inputValues, setInputValues] = useState(initialValues);
+  const [inputErrors, setInputErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(pass);
+    setInputErrors(validate(inputValues));
+    setIsSubmit(true);
   };
+
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      console.log(inputValues);
+      navigate("/emailverify");
+    }
+  }, [inputErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.code) {
+      errors.code = "Input verification code!";
+    } else if (values.code.length < 6) {
+      errors.code = "Code must be exactly 6";
+    } else if (values.code.length > 6) {
+      errors.code = "Code must be exactly 6";
+    }
+    return errors;
+  };
+
   return (
     <MainLayout>
       <div className="w-full font-sans">
@@ -40,18 +72,19 @@ function Verifycode() {
                         <FiLock />
                       </div>
                       <input
+                        name="code"
                         className="w-full rounded-sm p-3 pl-[4.5rem] font-sans text-[18px] italic"
-                        value={pass}
-                        onChange={(e) => setPass(e.target.value)}
+                        value={inputValues.code}
+                        onChange={handleChange}
                         type="password"
-                        placeholder="* * * * * * *"
+                        placeholder="* * * * * *"
                       />
                     </div>
+                    <p className="mt-1 pl-2 text-left text-xs text-red-600">
+                      {inputErrors.code}
+                    </p>
                   </div>
-                  <div
-                    className="mt-8 w-full text-left"
-                    onClick={() => navigate("/emailverify")}
-                  >
+                  <div className="mt-8 w-full text-left">
                     <Verifybtn />
                   </div>
                 </form>
