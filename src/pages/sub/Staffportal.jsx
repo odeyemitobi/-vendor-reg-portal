@@ -34,6 +34,7 @@ function Staffportal() {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
 
     if (!values.email) {
       errors.email = "Email is required!";
@@ -47,10 +48,11 @@ function Staffportal() {
       errors.password = "Password must be more than 8 characters";
     } else if (values.password.length > 8) {
       errors.password = "Password cannot exceed more than 8 characters";
-    }
+    } else if (!isContainsSymbol.test(values.password)) {
+      errors.password = "password should contain atleast one special symbol";
+    } 
     return errors;
   };
-  
 
   return (
     <StaffLayout>
@@ -80,7 +82,7 @@ function Staffportal() {
                   placeholder="moosteebeasty@fidelitybank.ng"
                 />
               </div>
-              <p className="mt-1 text-left pl-2 text-xs text-red-600">
+              <p className="mt-1 pl-2 text-left text-xs text-red-600">
                 {inputErrors.email}
               </p>
             </div>
@@ -104,7 +106,7 @@ function Staffportal() {
                   placeholder="* * * * * * *"
                 />
               </div>
-              <p className="mt-1 text-left pl-2 text-xs text-red-600">
+              <p className="mt-1 pl-2 text-left text-xs text-red-600">
                 {inputErrors.password}
               </p>
             </div>

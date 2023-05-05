@@ -108,8 +108,7 @@ function Signup() {
                 Login
               </div>
               <div className="w-2/3 text-2xl font-semibold text-[#343434]">
-                <div className="pl-1">Sign Up</div>
-                <img className="mt-1 w-[29%]" src={RECTANGLE} alt="" />
+                <div className="pl-1 border-b-4 w-[30%] pb-1 border-blue-900">Sign Up</div>
               </div>
             </div>
             <form onSubmit={handleSubmit} className="">
