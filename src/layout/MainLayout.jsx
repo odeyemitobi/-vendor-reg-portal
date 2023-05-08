@@ -5,7 +5,7 @@ const MainLayout = ({ children }) => {
   return (
     <section className="">
       <NavBar />
-      <div className="flex w-full justify-between">
+      <div className="flex w-full justify-between h-[calc(100vh-74px)]">
         {children}
       </div>
     </section>

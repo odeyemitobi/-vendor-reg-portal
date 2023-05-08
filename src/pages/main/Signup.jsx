@@ -86,7 +86,7 @@ function Signup() {
               alt=""
             />
           </div>
-          <div className="mt-[7rem] mb-2 text-left font-sans text-[13px] leading-5 text-[#343434]">
+          <div className="mt-[11rem] mb-2 text-left font-sans text-[13px] leading-5 text-[#343434]">
             <p>RC 103022</p>
             <p>
               Copyright 2019 Fidelity Bank Plc. An authorised financial services
@@ -108,7 +108,7 @@ function Signup() {
                 Login
               </div>
               <div className="w-2/3 text-2xl font-semibold text-[#343434]">
-                <div className="pl-1 border-b-4 w-[30%] pb-1 border-blue-900">Sign Up</div>
+                <div className="pl-1 border-b-4 w-[18%] pb-1 border-blue-900">Sign Up</div>
               </div>
             </div>
             <form onSubmit={handleSubmit} className="">
@@ -185,7 +185,7 @@ function Signup() {
               </div>
             </form>
           </div>
-          <div className="mt-[7rem]">
+          <div className="mt-[11rem]">
             <img className="ml-auto mr-6 h-11" src={ETAX} alt="" />
           </div>
         </div>

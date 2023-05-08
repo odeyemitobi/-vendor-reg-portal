@@ -37,11 +37,12 @@ h6 {
 }
 
 .staff {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   text-align: center;
   background-image: url("../Assets/img/Staffbg.png");
-  background-position: center;
-  background-size: cover;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   position: absolute;
 }

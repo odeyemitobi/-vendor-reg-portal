@@ -72,7 +72,7 @@ function Login() {
           <div className="mt-12 w-full">
             <img className="" src={HANDSHAKE} alt="" />
           </div>
-          <div className="mt-16 mb-2 pl-[2rem] text-left text-[13px] leading-5 text-[#343434]">
+          <div className="mt-20 mb-2 pl-[2rem] text-left text-[13px] leading-5 text-[#343434]">
             <p>RC 103022</p>
             <p>
               Copyright 2019 Fidelity Bank Plc. An authorised financial services
@@ -89,8 +89,9 @@ function Login() {
         <div className="mt-[4.3rem] w-full p-[4rem] ">
           <div className="flex w-full pl-2">
             <div className="w-1/6 text-2xl font-semibold text-[#343434]">
-              <div className="">Login</div>
-              <img className="mt-1 w-[80%]" src={RECTANGLE} alt="" />
+              <div className="w-[48%] border-b-4 border-blue-900 pb-1">
+                Login
+              </div>
             </div>
             <div
               className="w-2/3 cursor-pointer text-2xl text-[#343434]"
@@ -159,7 +160,7 @@ function Login() {
             </div>
           </form>
         </div>
-        <div className="mt-[10rem]">
+        <div className="mt-[14rem]">
           <img className="ml-auto mr-6 h-11" src={ETAX} alt="" />
         </div>
       </div>

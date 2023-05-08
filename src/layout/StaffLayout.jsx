@@ -5,7 +5,9 @@ const StaffLayout = ({ children }) => {
   return (
     <section className="">
       <StaffNavbar />
-      <div className="flex w-full justify-between">{children}</div>
+      <div className="flex w-full justify-between">
+        {children}
+      </div>
     </section>
   );
 };

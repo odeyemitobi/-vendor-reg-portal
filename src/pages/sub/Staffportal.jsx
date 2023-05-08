@@ -57,7 +57,7 @@ function Staffportal() {
   return (
     <StaffLayout>
       <div className="staff w-full font-sans">
-        <div className="mt-[11rem] mb-[-0.5rem] ml-auto mr-auto w-[50%] bg-[#F8F8F8]">
+        <div className="mt-[14rem] mb-[-0.5rem] ml-auto mr-auto w-[50%] bg-[#F8F8F8]">
           <div className="w-full pt-9 text-center text-2xl font-semibold text-[#343434]">
             <h1>Login</h1>
           </div>
@@ -115,8 +115,8 @@ function Staffportal() {
             </div>
           </form>
         </div>
-        <div className="mt-10 mb-3 flex w-full justify-between px-7 pt-[6rem]">
-          <div className="text-left text-[14px] text-white">
+        <div className="mt-12 mb-3 flex w-full justify-between px-7 pt-[6rem]">
+          <div className="text-left text-[14px] it text-white">
             <p>RC 103022</p>
             <p>
               Copyright 2019 Fidelity Bank Plc. An authorised financial services
